@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Birthday Rajni</title>
+  <style>
+    /* General Styling */
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Arial', sans-serif;
+      overflow: hidden;
+      background: linear-gradient(135deg, #ff9a9e, #fad0c4, #fbc2eb);
+      animation: gradientBG 15s infinite alternate;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      color: white;
+      text-align: center;
+    }
+
+    @keyframes gradientBG {
+      0% { background: linear-gradient(135deg, #ff9a9e, #fad0c4, #fbc2eb); }
+      50% { background: linear-gradient(135deg, #a1c4fd, #c2e9fb, #fbc2eb); }
+      100% { background: linear-gradient(135deg, #fbc2eb, #a1c4fd, #ff9a9e); }
+    }
+
+    h1, h2 {
+      margin: 0;
+      padding: 0;
+    }
+
+    h1 {
+      font-size: 3.5rem;
+      text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+    }
+
+    h2 {
+      font-size: 1.8rem;
+      margin-top: 20px;
+      text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.4);
+    }
+
+    .btn {
+      padding: 12px 24px;
+      font-size: 1.2rem;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      color: white;
+      background: linear-gradient(45deg, #ff758c, #ff7eb3);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      margin-top: 30px;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      transform: scale(1.1);
+      box-shadow: 0 6px 25px rgba(0, 0, 0, 0.4);
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    /* Proposal Window Styling */
+    .popup {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: white;
+      border-radius: 15px;
+      width: 80%;
+      max-width: 400px;
+      padding: 20px;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+      color: #333;
+      text-align: center;
+    }
+
+    .popup h2 {
+      font-size: 1.8rem;
+      margin-bottom: 20px;
+    }
+
+    .popup .btn-yes {
+      background: #4caf50;
+    }
+
+    .popup .btn-no {
+      background: #f44336;
+    }
+
+    .message-box {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #4caf50;
+      margin-top: 20px;
+      text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.2);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Greeting Section -->
+  <div id="greeting">
+    <h1>🎉 Happy Birthday Rajni! 🎉</h1>
+    <h2>May your day be as beautiful as you are!</h2>
+    <button class="btn" onclick="showProposal()">Next</button>
+  </div>
+
+  <!-- Proposal Popup -->
+  <div id="proposal" class="hidden">
+    <div class="popup">
+      <h2>I like you, Rajni ❤️ Do you like me too?</h2>
+      <button class="btn btn-yes" onclick="yesClick()">Yes</button>
+      <button class="btn btn-no" onclick="noClick()">No</button>
+    </div>
+  </div>
+
+  <!-- Response Message -->
+  <div id="response" class="message-box hidden"></div>
+
+  <!-- Audio Element -->
+  <audio id="sadSong" src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"></audio>
+
+  <script>
+    // Show proposal section
+    function showProposal() {
+      document.getElementById('greeting').classList.add('hidden');
+      document.getElementById('proposal').classList.remove('hidden');
+    }
+
+    // Handle Yes button click
+    function yesClick() {
+      const response = document.getElementById('response');
+      document.getElementById('proposal').classList.add('hidden');
+      response.textContent = "Thank you! You made my day! 😊";
+      response.classList.remove('hidden');
+    }
+
+    // Handle No button click
+    function noClick() {
+      const sadSong = document.getElementById('sadSong');
+      sadSong.play();
+      const response = document.getElementById('response');
+      document.getElementById('proposal').classList.add('hidden');
+      response.textContent = "Har Kisi Ko Nahi Milta Yahan Pyar Zindagi Mein... 😢";
+      response.classList.remove('hidden');
+    }
+  </script>
+
+</body>
+</html>
